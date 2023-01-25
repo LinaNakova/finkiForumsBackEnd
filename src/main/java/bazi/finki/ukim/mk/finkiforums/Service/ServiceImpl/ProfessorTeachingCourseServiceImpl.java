@@ -19,4 +19,9 @@ public class ProfessorTeachingCourseServiceImpl implements ProfessorTeachingCour
     public List<ProfessorTeachingCourse> findAllProfessorsTeachingCourses() {
         return this.professorTeachingCourseRepository.findAll();
     }
+
+    @Override
+    public List<ProfessorTeachingCourse> findAllByProfessorUsername(String username) {
+        return this.professorTeachingCourseRepository.findAllByProfessorUsername(username);
+    }
 }

@@ -5,5 +5,7 @@ import bazi.finki.ukim.mk.finkiforums.Model.Course;
 import java.util.List;
 
 public interface CourseService {
-    public List<Course> findAllCourses();
+     List<Course> findAllCourses();
+     List<Course> findAllCoursesBySubjectId(Long id);
+     Course findById(Long id);
 }

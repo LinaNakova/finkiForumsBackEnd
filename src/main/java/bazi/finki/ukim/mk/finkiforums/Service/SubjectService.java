@@ -5,5 +5,6 @@ import bazi.finki.ukim.mk.finkiforums.Model.Subject;
 import java.util.List;
 
 public interface SubjectService {
-    public List<Subject> findAllSubjects();
+    List<Subject> findAllSubjects();
+    Subject findById(Long id);
 }
