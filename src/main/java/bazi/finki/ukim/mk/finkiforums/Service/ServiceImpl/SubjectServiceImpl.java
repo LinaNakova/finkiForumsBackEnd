@@ -19,4 +19,10 @@ public class SubjectServiceImpl implements SubjectService {
     public List<Subject> findAllSubjects(){
         return this.subjectRepository.findAll();
     }
+
+    @Override
+    public Subject findById(Long id) {
+        return this.subjectRepository.findById(id).orElse(null);
+        //add error handling
+    }
 }

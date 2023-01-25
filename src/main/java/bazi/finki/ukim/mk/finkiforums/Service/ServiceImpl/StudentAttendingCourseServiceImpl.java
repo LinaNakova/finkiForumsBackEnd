@@ -19,4 +19,9 @@ public class StudentAttendingCourseServiceImpl implements StudentAttendingCourse
     public List<StudentAttendingCourse> findAllStudentsAndAllCourse(){
         return this.studentAttendingCourseRepository.findAll();
     }
+
+    @Override
+    public List<StudentAttendingCourse> findAllByStudentUsername(String username) {
+        return this.studentAttendingCourseRepository.findAllByStudentUsername(username);
+    }
 }

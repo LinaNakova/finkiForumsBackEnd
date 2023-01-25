@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface StudentAttendingCourseService {
     List<StudentAttendingCourse> findAllStudentsAndAllCourse();
+    List<StudentAttendingCourse> findAllByStudentUsername(String username);
 }
