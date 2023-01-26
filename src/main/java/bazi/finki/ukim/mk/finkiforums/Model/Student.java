@@ -26,4 +26,13 @@ public class Student {
 
     public Student() {
     }
+
+    public Student(String name, String lastName, String username, String email, String password, String index) {
+        this.name = name;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.index = index;
+    }
 }

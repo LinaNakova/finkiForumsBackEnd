@@ -4,12 +4,14 @@ import bazi.finki.ukim.mk.finkiforums.Model.ProfessorReaction;
 import bazi.finki.ukim.mk.finkiforums.Model.StudentReaction;
 import bazi.finki.ukim.mk.finkiforums.Service.ProfessorReactionService;
 import bazi.finki.ukim.mk.finkiforums.Service.StudentReactionService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/reactions")
 public class ReactionController {

@@ -3,13 +3,11 @@ package bazi.finki.ukim.mk.finkiforums.Web;
 import bazi.finki.ukim.mk.finkiforums.Exceptions.BadUsernameException;
 import bazi.finki.ukim.mk.finkiforums.Model.Student;
 import bazi.finki.ukim.mk.finkiforums.Service.StudentService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
