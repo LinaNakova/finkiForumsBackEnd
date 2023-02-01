@@ -21,7 +21,7 @@ public class CourseController {
         return this.courseService.findAllCourses();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/by-subject/{id}")
     public List<Course> findAllCoursesBySubjectId(@PathVariable Long id){
         return this.courseService.findAllCoursesBySubjectId(id);
     }

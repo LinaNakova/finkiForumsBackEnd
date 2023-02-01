@@ -39,9 +39,6 @@ public class StudentAttendingCourseServiceImpl implements StudentAttendingCourse
     public StudentAttendingCourse addCourseToStudent(String username, Long selectedCourse) {
         Student student = studentRepository.findByUsername(username).orElseThrow(()->new BadUsernameException(username));
         Course course = courseRepository.findById(selectedCourse).orElseThrow(()->new InvalidCourseIdException(selectedCourse));
-        StudentAttendingCourse studentAttendingCourse = new StudentAttendingCourse();
-        studentAttendingCourse.setStudent(student);
-        studentAttendingCourse.setCourse(course);
-        return this.studentAttendingCourseRepository.save(studentAttendingCourse);
+        return this.studentAttendingCourseRepository.save(new StudentAttendingCourse(student,course));
     }
 }

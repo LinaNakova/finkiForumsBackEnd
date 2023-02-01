@@ -20,4 +20,9 @@ public class StudentAttendingCourse {
 
     public StudentAttendingCourse() {
     }
+
+    public StudentAttendingCourse(Student student, Course course) {
+        this.student = student;
+        this.course = course;
+    }
 }
