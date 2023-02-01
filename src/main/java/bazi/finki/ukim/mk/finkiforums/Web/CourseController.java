@@ -2,13 +2,11 @@ package bazi.finki.ukim.mk.finkiforums.Web;
 
 import bazi.finki.ukim.mk.finkiforums.Model.Course;
 import bazi.finki.ukim.mk.finkiforums.Service.CourseService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/courses")
 public class CourseController {
@@ -23,7 +21,7 @@ public class CourseController {
         return this.courseService.findAllCourses();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/by-subject/{id}")
     public List<Course> findAllCoursesBySubjectId(@PathVariable Long id){
         return this.courseService.findAllCoursesBySubjectId(id);
     }

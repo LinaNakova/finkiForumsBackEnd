@@ -24,4 +24,12 @@ public class Professor {
 
     public Professor() {
     }
+
+    public Professor(String name, String lastName, String username, String email, String password) {
+        this.name = name;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 }

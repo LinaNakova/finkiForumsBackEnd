@@ -2,13 +2,11 @@ package bazi.finki.ukim.mk.finkiforums.Web;
 
 import bazi.finki.ukim.mk.finkiforums.Model.StudentAttendingCourse;
 import bazi.finki.ukim.mk.finkiforums.Service.StudentAttendingCourseService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/student-courses")
 public class StudentAttendingCourseController {
@@ -24,5 +22,10 @@ public class StudentAttendingCourseController {
     @GetMapping()
     public List<StudentAttendingCourse> findAllCoursesForStudent(@RequestParam(name = "username") String username){
         return this.studentAttendingCourseService.findAllByStudentUsername(username);
+    }
+    @GetMapping("/add")
+    public StudentAttendingCourse addCourseToStudent(@RequestParam(name = "username") String username,
+                                                           @RequestParam(name = "selectedCourse") String selectedCourse){
+        return this.studentAttendingCourseService.addCourseToStudent(username,Long.parseLong(selectedCourse));
     }
 }
