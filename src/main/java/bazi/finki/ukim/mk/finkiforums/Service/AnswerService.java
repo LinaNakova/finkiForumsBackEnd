@@ -7,4 +7,6 @@ import java.util.List;
 public interface AnswerService {
     List<Answer> findAllAnswers();
     List<Answer> findAllByQuestionId(Long id);
+
+    Answer save(String content, String username, Long questionId);
 }
