@@ -5,6 +5,6 @@ import bazi.finki.ukim.mk.finkiforums.Model.Professor;
 import java.util.List;
 
 public interface ProfessorService {
-    public List<Professor> findAllProfessors();
-
+    List<Professor> findAllProfessors();
+    Professor findProfessorByUsername(String username);
 }

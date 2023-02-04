@@ -38,4 +38,11 @@ public class QuestionController {
                                @RequestParam Long courseId){
             return this.questionService.save(title,content,studentUserame,courseId);
     }
+
+    @GetMapping("/likes/{id}")
+    public Integer findLikesForAnswer(@PathVariable Long id){
+        return this.questionService.findLikesForAnswer(id);
+    }
+
+
 }

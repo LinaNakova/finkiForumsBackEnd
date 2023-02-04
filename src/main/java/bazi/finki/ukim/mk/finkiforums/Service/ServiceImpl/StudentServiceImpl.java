@@ -1,5 +1,6 @@
 package bazi.finki.ukim.mk.finkiforums.Service.ServiceImpl;
 
+import bazi.finki.ukim.mk.finkiforums.Exceptions.BadUsernameException;
 import bazi.finki.ukim.mk.finkiforums.Model.Student;
 import bazi.finki.ukim.mk.finkiforums.Repository.StudentRepository;
 import bazi.finki.ukim.mk.finkiforums.Service.StudentService;
@@ -23,7 +24,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Optional<Student> findStudentByUsername(String username) {
-        return this.studentRepository.findByUsername(username);
+    public Student findStudentByUsername(String username) {
+        return this.studentRepository.findByUsername(username).orElseThrow(() -> new BadUsernameException(username));
     }
 }

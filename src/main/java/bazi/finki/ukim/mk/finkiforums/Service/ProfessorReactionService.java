@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ProfessorReactionService {
     List<ProfessorReaction> findAllReactionsByProfessors();
+    void saveReaction(Long id, String username, Boolean reaction);
 }

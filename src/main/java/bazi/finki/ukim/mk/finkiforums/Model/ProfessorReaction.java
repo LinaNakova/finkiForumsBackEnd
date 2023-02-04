@@ -22,4 +22,10 @@ public class ProfessorReaction {
 
     public ProfessorReaction() {
     }
+
+    public ProfessorReaction(Professor professor, Answer answer, Boolean reaction) {
+        this.professor = professor;
+        this.answer = answer;
+        this.reaction = reaction;
+    }
 }
