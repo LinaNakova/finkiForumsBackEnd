@@ -31,4 +31,13 @@ public class Answer {
 
     public Answer() {
     }
+
+    public Answer(String content, Boolean valid, Timestamp dateAnswered, Question question, Student student, Professor professor) {
+        this.content = content;
+        this.valid = valid;
+        this.dateAnswered = dateAnswered;
+        this.question = question;
+        this.student = student;
+        this.professor = professor;
+    }
 }

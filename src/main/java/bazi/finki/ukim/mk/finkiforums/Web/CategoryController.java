@@ -2,10 +2,7 @@ package bazi.finki.ukim.mk.finkiforums.Web;
 
 import bazi.finki.ukim.mk.finkiforums.Model.Category;
 import bazi.finki.ukim.mk.finkiforums.Service.CategoryService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,4 +21,7 @@ public class CategoryController {
     public List<Category> findAllCategories(){
         return this.categoryService.findAllCategories();
     }
+
+    @GetMapping("/{id}")
+    public Category findById(@PathVariable Long id) {return this.categoryService.findById(id);}
 }

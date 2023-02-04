@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @Table(name = "prasanja", schema = "project")
@@ -27,5 +28,13 @@ public class Question {
     Course course;
 
     public Question() {
+    }
+
+    public Question(String title, String content, Timestamp dateAsked, Student student, Course course) {
+        this.title = title;
+        this.content = content;
+        this.dateAsked = dateAsked;
+        this.student = student;
+        this.course = course;
     }
 }

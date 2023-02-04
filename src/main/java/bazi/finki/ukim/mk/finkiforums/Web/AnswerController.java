@@ -25,4 +25,11 @@ public class AnswerController {
     public List<Answer> findAllAnswersForQuestion(@PathVariable Long id){
         return this.answerService.findAllByQuestionId(id);
     }
+
+    @GetMapping("/add")
+    public Answer addAnswer(@RequestParam String content,
+                            @RequestParam String username,
+                            @RequestParam Long questionId){
+        return this.answerService.save(content,username,questionId);
+    }
 }

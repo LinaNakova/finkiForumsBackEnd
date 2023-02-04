@@ -1,5 +1,6 @@
 package bazi.finki.ukim.mk.finkiforums.Service.ServiceImpl;
 
+import bazi.finki.ukim.mk.finkiforums.Exceptions.InvalidCategoryIdException;
 import bazi.finki.ukim.mk.finkiforums.Model.Category;
 import bazi.finki.ukim.mk.finkiforums.Repository.CategoryRepository;
 import bazi.finki.ukim.mk.finkiforums.Service.CategoryService;
@@ -19,5 +20,10 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<Category> findAllCategories() {
         return this.categoryRepository.findAll();
+    }
+
+    @Override
+    public Category findById(Long id) {
+        return this.categoryRepository.findById(id).orElseThrow(() -> new InvalidCategoryIdException(id));
     }
 }

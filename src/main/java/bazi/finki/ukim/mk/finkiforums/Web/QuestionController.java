@@ -31,4 +31,11 @@ public class QuestionController {
         return this.questionService.findById(id);
     }
 
+    @GetMapping("/add")
+    public Question addQuestion(@RequestParam String title,
+                               @RequestParam String content,
+                               @RequestParam String studentUserame,
+                               @RequestParam Long courseId){
+            return this.questionService.save(title,content,studentUserame,courseId);
+    }
 }
