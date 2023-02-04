@@ -1,7 +1,7 @@
 package bazi.finki.ukim.mk.finkiforums.Service.ServiceImpl;
 
-import bazi.finki.ukim.mk.finkiforums.Enumerations.UserType;
 import bazi.finki.ukim.mk.finkiforums.Exceptions.BadUsernameException;
+import bazi.finki.ukim.mk.finkiforums.Exceptions.InvalidAnswerIdException;
 import bazi.finki.ukim.mk.finkiforums.Exceptions.InvalidQuestionIdException;
 import bazi.finki.ukim.mk.finkiforums.Model.Answer;
 import bazi.finki.ukim.mk.finkiforums.Model.Professor;
@@ -11,13 +11,13 @@ import bazi.finki.ukim.mk.finkiforums.Repository.AnswerRepository;
 import bazi.finki.ukim.mk.finkiforums.Repository.ProfessorRepository;
 import bazi.finki.ukim.mk.finkiforums.Repository.QuestionRepository;
 import bazi.finki.ukim.mk.finkiforums.Repository.StudentRepository;
-import bazi.finki.ukim.mk.finkiforums.Response.UserResponse;
 import bazi.finki.ukim.mk.finkiforums.Service.AnswerService;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AnswerServiceImpl implements AnswerService {
@@ -60,5 +60,10 @@ public class AnswerServiceImpl implements AnswerService {
         else{
             throw new InvalidQuestionIdException(questionId);
         }
+    }
+
+    @Override
+    public Answer findById(Long id) {
+        return this.answerRepository.findById(id).orElseThrow(() -> new InvalidAnswerIdException(id));
     }
 }
