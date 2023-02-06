@@ -13,8 +13,9 @@ public class Material {
     Long id;
     @Column(name = "m_ime")
     String name;
-    @Column(name = "m_bytes")
-    String bytes;
+    //TODO:Update when Database is updated
+    //@Column(name = "m_bytes")
+    //String bytes;
     @JoinColumn(name = "p_id")
     @ManyToOne
     Professor pId;

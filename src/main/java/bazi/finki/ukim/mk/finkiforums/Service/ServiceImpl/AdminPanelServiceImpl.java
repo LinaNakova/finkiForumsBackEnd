@@ -86,7 +86,8 @@ public class AdminPanelServiceImpl implements AdminPanelService {
                         "                     join project.e_prof_na epn on ku.ku_id = epn.ku_id\n" +
                         "                     join project.profesori p on epn.p_id = p.p_id\n" +
                         "            group by p.p_id) najm_kurs on prof.p_id = najm_kurs.p_id) as parts\n" +
-                        "order by vk desc";
+                        "order by vk desc\n"+
+                        "limit 5";
                 return jdbcTemplate.queryForList(sql);
             case 4:
                 sql = "select pr.pr_id, pr.pr_ime, q1.ku_ime, q1.br_isti_kategorii, count(distinct q2.pra_id) as br_prasanja\n" +
