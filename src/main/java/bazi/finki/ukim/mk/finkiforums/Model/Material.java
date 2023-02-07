@@ -1,7 +1,6 @@
 package bazi.finki.ukim.mk.finkiforums.Model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
 @Table(schema = "project", name = "materijali")
@@ -14,14 +13,24 @@ public class Material {
     String name;
     @JoinColumn(name = "p_id")
     @ManyToOne
-    Professor pId;
+    Professor professor;
     @JoinColumn(name = "ka_id")
     @ManyToOne
-    Category caId;
+    Category category;
     @JoinColumn(name = "ku_id")
     @ManyToOne
-    Course coId;
+    Course course;
 
     public Material() {
+    }
+
+    public Material(String name, Professor professor, Course course) {
+        this.name = name;
+        this.professor = professor;
+        this.course = course;
+    }
+
+    public String getName() {
+        return name;
     }
 }

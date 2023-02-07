@@ -2,6 +2,7 @@ package bazi.finki.ukim.mk.finkiforums.Web;
 
 
 import bazi.finki.ukim.mk.finkiforums.Model.Material;
+import bazi.finki.ukim.mk.finkiforums.Service.LoginService;
 import bazi.finki.ukim.mk.finkiforums.Service.MaterialService;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -27,9 +28,11 @@ import static org.springframework.http.HttpHeaders.CONTENT_DISPOSITION;
 @RequestMapping("api/materials")
 public class MaterialController {
     private final MaterialService materialService;
+    private final LoginService loginService;
 
-    public MaterialController(MaterialService materialService) {
+    public MaterialController(MaterialService materialService, LoginService loginService) {
         this.materialService = materialService;
+        this.loginService = loginService;
     }
 
     @GetMapping("/all")
@@ -37,13 +40,20 @@ public class MaterialController {
         return this.materialService.findAllMaterials();
     }
 
+    @GetMapping("/all/{courseId}")
+    public List<String> findAllMaterialsForCourseId(@PathVariable Long courseId) {
+        return this.materialService.findAllMaterialsForCourseId(courseId);
+    }
+
     public static final String DIRECTORY = System.getProperty("user.home") + "/Downloads/ForUploading/";
 
-    @PostMapping("/upload")
-    public ResponseEntity<List<String>> uploadFiles(@RequestParam("files") List<MultipartFile> multipartFiles) {
+    @PostMapping("/upload/{courseId}")
+    public ResponseEntity<List<String>> uploadFiles(@RequestParam("files") List<MultipartFile> multipartFiles,
+                                                    @PathVariable Long courseId) {
         List<String> filenames = new ArrayList<>();
         for (MultipartFile file : multipartFiles) {
             filenames.add(StringUtils.cleanPath(file.getOriginalFilename()));
+            this.materialService.save(file.getOriginalFilename(), this.loginService.getActiveProfessorUsername(), courseId);
         }
         return ResponseEntity.ok().body(filenames);
     }
