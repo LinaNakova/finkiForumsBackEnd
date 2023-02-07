@@ -37,7 +37,7 @@ public class MaterialServiceImpl implements MaterialService {
 
     @Override
     public void save(String name, String username, Long courseId) {
-        Professor professor = this.professorService.findByUsername(username);
+        Professor professor = this.professorService.findProfessorByUsername(username);
         Course course = this.courseService.findById(courseId);
         this.materialRepository.save(new Material(name, professor, course));
     }
