@@ -17,6 +17,7 @@ public class LoginServiceImpl implements LoginService {
     private final StudentRepository studentRepository;
     private final ProfessorRepository professorRepository;
     private final AdminRepository adminRepository;
+    private String activeProfessorUsername;
 
     public LoginServiceImpl(StudentRepository studentRepository, ProfessorRepository professorRepository, AdminRepository adminRepository) {
         this.studentRepository = studentRepository;
@@ -44,9 +45,15 @@ public class LoginServiceImpl implements LoginService {
         {
             Professor professor = this.professorRepository.findByUsername(username).get();
             if (professor.getPassword().equals(password)){
+                this.activeProfessorUsername = username;
                 return new UserResponse(professor.getUsername(), UserType.PROFESSOR);
             }
         }
         throw new BadUsernameException(username);
+    }
+
+    @Override
+    public String getActiveProfessorUsername() {
+        return activeProfessorUsername;
     }
 }
