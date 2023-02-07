@@ -27,4 +27,10 @@ public class ProfessorServiceImpl implements ProfessorService {
         return this.professorRepository.findByUsername(username)
                 .orElseThrow(() -> new BadUsernameException(username));
     }
+
+    @Override
+    public Professor findProfessorByUsername(String username) {
+        return this.professorRepository.findByUsername(username)
+                .orElseThrow(() -> new BadUsernameException(username));
+    }
 }
