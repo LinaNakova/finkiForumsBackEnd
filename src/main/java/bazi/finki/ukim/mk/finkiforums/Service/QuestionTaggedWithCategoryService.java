@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface QuestionTaggedWithCategoryService {
     List<QuestionTaggedWithCategory> findAllTaggedQuestions();
+
+    QuestionTaggedWithCategory save(Long questionId, Long categoryId);
 }

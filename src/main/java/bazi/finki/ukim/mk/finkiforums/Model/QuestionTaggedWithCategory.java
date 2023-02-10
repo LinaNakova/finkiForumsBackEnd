@@ -20,4 +20,9 @@ public class QuestionTaggedWithCategory {
 
     public QuestionTaggedWithCategory() {
     }
+
+    public QuestionTaggedWithCategory(Question question, Category category) {
+        this.question = question;
+        this.category = category;
+    }
 }
