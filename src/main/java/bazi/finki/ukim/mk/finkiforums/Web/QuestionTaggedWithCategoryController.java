@@ -2,10 +2,7 @@ package bazi.finki.ukim.mk.finkiforums.Web;
 
 import bazi.finki.ukim.mk.finkiforums.Model.QuestionTaggedWithCategory;
 import bazi.finki.ukim.mk.finkiforums.Service.QuestionTaggedWithCategoryService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +19,10 @@ public class QuestionTaggedWithCategoryController {
     @GetMapping("/all")
     public List<QuestionTaggedWithCategory> findAllTaggedQuestions(){
         return this.questionTaggedWithCategoryService.findAllTaggedQuestions();
+    }
+
+    @GetMapping("/add/{categoryId}")
+    public QuestionTaggedWithCategory save(@RequestParam Long questionId, @PathVariable Long categoryId){
+        return this.questionTaggedWithCategoryService.save(questionId,categoryId);
     }
 }
